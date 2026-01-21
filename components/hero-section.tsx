@@ -37,7 +37,7 @@ export function HeroSection() {
             <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-primary opacity-75" />
             <span className="relative inline-flex h-2 w-2 rounded-full bg-primary" />
           </span>
-          Now in private beta
+          Currently in development
         </div>
 
         {/* Main headline */}
@@ -88,7 +88,7 @@ export function HeroSection() {
 
         {/* Social proof mini */}
         <p className="mt-6 text-sm text-muted-foreground">
-          Join 2,400+ people on the waitlist
+          Join 10 early supporters on the waitlist
         </p>
       </div>
     </section>
