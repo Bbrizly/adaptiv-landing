@@ -121,7 +121,7 @@ export function HeroSection() {
 
         {/* Social proof mini */}
         <p className="mt-6 text-sm text-muted-foreground">
-          Join 10 early supporters on the waitlist
+          Join our early supporters on the waitlist
         </p>
       </div>
     </section>
