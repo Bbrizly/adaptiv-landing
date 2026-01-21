@@ -11,16 +11,44 @@ export function HeroSection() {
   const [email, setEmail] = useState("")
   const [submitted, setSubmitted] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
+  const [errorMessage, setErrorMessage] = useState<string | null>(null)
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     if (!email) return
-    
+
+    setErrorMessage(null)
     setIsLoading(true)
-    // Simulate API call
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setIsLoading(false)
-    setSubmitted(true)
+
+    try {
+      const response = await fetch("/api/waitlist", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({ email }),
+      })
+
+      if (!response.ok) {
+        const data = await response.json().catch(() => null)
+        const message =
+          data && typeof data.error === "string"
+            ? data.error
+            : "Unable to join the waitlist right now."
+        throw new Error(message)
+      }
+
+      setSubmitted(true)
+      setEmail("")
+    } catch (error) {
+      setErrorMessage(
+        error instanceof Error
+          ? error.message
+          : "Something went wrong. Please try again.",
+      )
+    } finally {
+      setIsLoading(false)
+    }
   }
 
   return (
@@ -63,8 +91,8 @@ export function HeroSection() {
                 className="h-12 flex-1 border-border bg-card text-foreground placeholder:text-muted-foreground"
                 required
               />
-              <Button 
-                type="submit" 
+              <Button
+                type="submit"
                 className="h-12 gap-2 px-6"
                 disabled={isLoading}
               >
@@ -83,6 +111,11 @@ export function HeroSection() {
               <Check className="h-5 w-5" />
               <span className="font-medium">You're on the list! We'll be in touch soon.</span>
             </div>
+          )}
+          {!submitted && errorMessage && (
+            <p className="mt-3 text-sm text-destructive" role="alert">
+              {errorMessage}
+            </p>
           )}
         </form>
 
