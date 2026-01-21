@@ -7,9 +7,9 @@ const waitlistSchema = z.object({
   email: z.string().email("Please provide a valid email address."),
 })
 
-const resend = new Resend(process.env.RESEND_API_KEY);
-
 async function sendEmails(email: string) {
+  const resend = new Resend(process.env.RESEND_API_KEY);
+
   const fromEmail = process.env.RESEND_FROM_EMAIL
   const forwardEmail = process.env.WAITLIST_FORWARD_EMAIL
 
