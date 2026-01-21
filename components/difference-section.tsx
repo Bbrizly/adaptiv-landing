@@ -37,7 +37,7 @@ export function DifferenceSection() {
 
           <div className="relative overflow-hidden rounded-xl border-2 border-primary bg-background p-6">
             <div className="absolute right-0 top-0 rounded-bl-lg bg-primary px-2 py-1 text-xs font-medium text-primary-foreground">
-              AdaptFit
+              Adaptiv
             </div>
             <div className="mb-4 flex h-12 w-12 items-center justify-center rounded-lg bg-primary/10">
               <RefreshCw className="h-6 w-6 text-primary" />

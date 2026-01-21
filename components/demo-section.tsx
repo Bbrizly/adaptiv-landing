@@ -10,7 +10,7 @@ export function DemoSection() {
               Interactive Demo
             </span>
             <h2 className="mb-6 text-3xl font-bold text-foreground md:text-4xl">
-              See how AdaptFit works
+              See how Adaptiv works
             </h2>
             <div className="space-y-4 text-muted-foreground">
               <div className="flex gap-4">
