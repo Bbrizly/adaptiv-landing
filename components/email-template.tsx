@@ -7,10 +7,10 @@ interface EmailTemplateProps {
 export function EmailTemplate({ email }: EmailTemplateProps) {
   return (
     <div>
-      <h1>Welcome to the Adaptiv Waitlist!</h1>
+      <h1>Welcome to the Adptiv Waitlist!</h1>
       <p>Thank you for joining our waitlist, {email}!</p>
       <p>We'll keep you updated on our progress and let you know when we're ready to launch.</p>
-      <p>Best regards,<br />The Adaptiv Team</p>
+      <p>Best regards,<br />The Adptiv Team</p>
     </div>
   );
 }

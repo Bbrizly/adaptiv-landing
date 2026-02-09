@@ -30,7 +30,7 @@ export function SocialProofSection() {
             From our beta testers
           </h2>
           <p className="text-muted-foreground">
-            Real feedback from people testing Adaptiv
+            Real feedback from people testing Adptiv
           </p>
         </div>
 

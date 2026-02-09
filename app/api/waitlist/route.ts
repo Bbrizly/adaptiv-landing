@@ -19,7 +19,7 @@ async function sendEmails(email: string) {
     )
   }
 
-  const from = fromEmail.includes("<") ? fromEmail : `Adaptiv Waitlist <${fromEmail}>`
+  const from = fromEmail.includes("<") ? fromEmail : `Adptiv Waitlist <${fromEmail}>`
 
   // Send notification to admin
   const adminResult = await resend.emails.send({
@@ -27,7 +27,7 @@ async function sendEmails(email: string) {
     to: [forwardEmail],
     subject: "New waitlist subscriber",
     text: `A new person joined the waitlist: ${email}`,
-    html: `<p>A new person joined the Adaptiv waitlist:</p><p><strong>${email}</strong></p>`,
+    html: `<p>A new person joined the Adptiv waitlist:</p><p><strong>${email}</strong></p>`,
   });
 
   if (adminResult.error) {
@@ -38,7 +38,7 @@ async function sendEmails(email: string) {
   const userResult = await resend.emails.send({
     from,
     to: [email],
-    subject: "Welcome to the Adaptiv Waitlist!",
+    subject: "Welcome to the Adptiv Waitlist!",
     react: EmailTemplate({ email }),
   });
 

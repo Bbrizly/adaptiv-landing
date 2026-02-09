@@ -10,7 +10,7 @@ export function DemoSection() {
             Interactive Demo
           </span>
           <h2 className="mb-4 text-3xl font-bold text-foreground md:text-4xl">
-            See how Adaptiv works
+            See how Adptiv works
           </h2>
           <p className="mx-auto max-w-2xl text-muted-foreground">
             From quick onboarding to daily use, experience how the app adapts to your life.

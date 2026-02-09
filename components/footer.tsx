@@ -10,7 +10,7 @@ export function Footer() {
             <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
               <Activity className="h-4 w-4 text-primary-foreground" />
             </div>
-            <span className="text-lg font-semibold text-foreground">Adaptiv</span>
+            <span className="text-lg font-semibold text-foreground">Adptiv</span>
           </div>
 
           <nav className="flex items-center gap-6">
@@ -35,7 +35,7 @@ export function Footer() {
           </nav>
 
           <p className="text-sm text-muted-foreground">
-            © 2026 Adaptiv. All rights reserved.
+            © 2026 Adptiv. All rights reserved.
           </p>
         </div>
       </div>

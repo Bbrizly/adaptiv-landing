@@ -9,7 +9,7 @@ export function Header() {
           <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-primary">
             <Activity className="h-4 w-4 text-primary-foreground" />
           </div>
-          <span className="text-lg font-semibold text-foreground">Adaptiv</span>
+          <span className="text-lg font-semibold text-foreground">Adptiv</span>
         </Link>
 
         <nav className="hidden items-center gap-6 md:flex">

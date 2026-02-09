@@ -34,7 +34,7 @@ export function FAQSection() {
             Frequently asked questions
           </h2>
           <p className="text-muted-foreground">
-            Everything you need to know about Adaptiv
+            Everything you need to know about Adptiv
           </p>
         </div>
 
