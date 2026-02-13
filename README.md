@@ -16,3 +16,21 @@ The waitlist signup form calls the `join_waitlist` Supabase Edge Function. Confi
 - `NEXT_PUBLIC_SUPABASE_ANON_KEY` – the anonymous public API key
 
 These values should be added to `.env.local` and must never include the service role key.
+
+## Test the waitlist flow
+
+1. Run the site locally with `npm run dev`.
+2. Visit `http://localhost:3000` and submit the waitlist form on the homepage.
+3. Verify that the request succeeds ("You're on the list" success banner).
+4. Open the Supabase Table Editor for the `waitlist` table and confirm the new row exists.
+5. If you hit a CORS error, update the Edge Function using the guidance below.
+
+## Supabase Edge Function CORS
+
+The `join_waitlist` Edge Function code is managed inside Supabase, not this repo. If you see browser CORS errors while invoking it, edit the function to:
+
+- Reply to `OPTIONS` requests with the appropriate `Access-Control-Allow-*` headers.
+- Return `Access-Control-Allow-Origin` values that cover `http://localhost:3000` for local dev plus your production domain.
+- Keep the service role key in Supabase function secrets; the website only uses the public anon key.
+
+After redeploying the function with those headers, retry the form submission.

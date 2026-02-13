@@ -2,55 +2,9 @@
 
 import React from "react"
 
-import { useState } from "react"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { ArrowRight, Check } from "lucide-react"
+import { WaitlistForm } from "@/components/waitlist-form"
 
 export function HeroSection() {
-  const [email, setEmail] = useState("")
-  const [submitted, setSubmitted] = useState(false)
-  const [isLoading, setIsLoading] = useState(false)
-  const [errorMessage, setErrorMessage] = useState<string | null>(null)
-
-  const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
-    if (!email) return
-
-    setErrorMessage(null)
-    setIsLoading(true)
-
-    try {
-      const response = await fetch("/api/waitlist", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify({ email }),
-      })
-
-      if (!response.ok) {
-        const data = await response.json().catch(() => null)
-        const message =
-          data && typeof data.error === "string"
-            ? data.error
-            : "Unable to join the waitlist right now."
-        throw new Error(message)
-      }
-
-      setSubmitted(true)
-      setEmail("")
-    } catch (error) {
-      setErrorMessage(
-        error instanceof Error
-          ? error.message
-          : "Something went wrong. Please try again.",
-      )
-    } finally {
-      setIsLoading(false)
-    }
-  }
-
   return (
     <section className="relative overflow-hidden px-4 pb-16 pt-24 md:pb-24 md:pt-32">
       {/* Background gradient */}
@@ -79,45 +33,8 @@ export function HeroSection() {
           Miss a workout? Ate out? Your AI coach automatically rebalances your week so you stay on track without the guilt or math.
         </p>
 
-        {/* Email form */}
-        <form onSubmit={handleSubmit} className="mx-auto max-w-md">
-          {!submitted ? (
-            <div className="flex flex-col gap-3 sm:flex-row">
-              <Input
-                type="email"
-                placeholder="Enter your email"
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                className="h-12 flex-1 border-border bg-card text-foreground placeholder:text-muted-foreground"
-                required
-              />
-              <Button
-                type="submit"
-                className="h-12 gap-2 px-6"
-                disabled={isLoading}
-              >
-                {isLoading ? (
-                  "Joining..."
-                ) : (
-                  <>
-                    Join Waitlist
-                    <ArrowRight className="h-4 w-4" />
-                  </>
-                )}
-              </Button>
-            </div>
-          ) : (
-            <div className="flex items-center justify-center gap-2 rounded-lg border border-primary/30 bg-primary/10 px-6 py-4 text-primary">
-              <Check className="h-5 w-5" />
-              <span className="font-medium">You're on the list! We'll be in touch soon.</span>
-            </div>
-          )}
-          {!submitted && errorMessage && (
-            <p className="mt-3 text-sm text-destructive" role="alert">
-              {errorMessage}
-            </p>
-          )}
-        </form>
+        {/* Waitlist form */}
+        <WaitlistForm />
 
         {/* Social proof mini */}
         <p className="mt-6 text-sm text-muted-foreground">
