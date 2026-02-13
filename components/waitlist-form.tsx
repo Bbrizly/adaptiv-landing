@@ -5,7 +5,7 @@ import { ArrowRight, Check } from "lucide-react"
 
 import { Button } from "@/components/ui/button"
 import { Input } from "@/components/ui/input"
-import { supabase } from "@/lib/supabase-client"
+import { getSupabaseClient } from "@/lib/supabase-client"
 
 export function WaitlistForm() {
   const [email, setEmail] = useState("")
@@ -21,6 +21,7 @@ export function WaitlistForm() {
     setErrorMessage(null)
 
     try {
+      const supabase = getSupabaseClient()
       const { error } = await supabase.functions.invoke("join_waitlist", {
         body: { email },
       })
